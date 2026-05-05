@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christine Lau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --mist: #f4f2ee;
+      --stone: #8a8278;
+      --warm: #c8b89a;
+      --accent: #5c4f3a;
+      --line: #ddd8d0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--mist);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* LANGUAGE TOGGLE */
+    .lang-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 2.5rem;
+      background: var(--mist);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 0.35rem 0.85rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--mist);
+    }
+
+    .lang-btn:not(.active):hover {
+      background: var(--warm);
+      color: var(--mist);
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 7rem 2.5rem 5rem;
+    }
+
+    /* HEADER */
+    header {
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s ease forwards 0.1s;
+    }
+
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.25s; }
+    section:nth-child(2) { animation-delay: 0.4s; }
+    section:nth-child(3) { animation-delay: 0.55s; }
+    section:nth-child(4) { animation-delay: 0.7s; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .bio {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    /* EXPERTISE GRID */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .expertise-item {
+      padding: 1.1rem 1.4rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+
+    .expertise-item:hover {
+      background: white;
+    }
+
+    /* HIGHLIGHTS */
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 2px solid var(--warm);
+    }
+
+    .highlight-item {
+      padding: 0.9rem 0 0.9rem 1.4rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    .highlight-item:last-child {
+      border-bottom: none;
+    }
+
+    /* CONTACT */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--warm);
+      padding-bottom: 0.1rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .contact-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 6rem 1.5rem 4rem; }
+      .expertise-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LANGUAGE BAR -->
+  <div class="lang-bar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <h1 class="name">Christine Lau</h1>
+      <p class="tagline" id="tagline">Public Sector Advisor &nbsp;·&nbsp; Ottawa–Gatineau</p>
+    </header>
+
+    <!-- BIO -->
+    <section>
+      <div class="section-label" id="label-about">About</div>
+      <p class="bio" id="bio-text">
+        I help governments and organizations design the systems, frameworks, and oversight models that turn policy intent into real outcomes. With over 25 years working at the intersection of public policy, service delivery, and digital governance, I bring a track record of building what lasts — integrated performance architectures, risk-based oversight models, and decision-ready insight for senior leaders navigating complex, multi-organization environments.
+      </p>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section>
+      <div class="section-label" id="label-expertise">Areas of Expertise</div>
+      <div class="expertise-grid" id="expertise-grid">
+        <div class="expertise-item" data-en="Enterprise Performance &amp; Oversight" data-fr="Performance et surveillance d'entreprise">Enterprise Performance &amp; Oversight</div>
+        <div class="expertise-item" data-en="Service &amp; Digital Policy" data-fr="Politique numérique et de service">Service &amp; Digital Policy</div>
+        <div class="expertise-item" data-en="Risk-Based Governance" data-fr="Gouvernance fondée sur le risque">Risk-Based Governance</div>
+        <div class="expertise-item" data-en="Executive Advisory &amp; Decision Support" data-fr="Conseil exécutif et aide à la décision">Executive Advisory &amp; Decision Support</div>
+        <div class="expertise-item" data-en="Cross-System Integration" data-fr="Intégration intersystèmes">Cross-System Integration</div>
+        <div class="expertise-item" data-en="Organizational Alignment" data-fr="Alignement organisationnel">Organizational Alignment</div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section>
+      <div class="section-label" id="label-work">Selected Work</div>
+      <div class="highlights" id="highlights">
+        <div class="highlight-item" data-en="Designed and implemented a government-wide enterprise performance framework supporting whole-of-government service and digital policy at TBS." data-fr="Conçu et mis en œuvre un cadre de performance d'entreprise à l'échelle du gouvernement, appuyant la politique sur les services et le numérique au SCT.">Designed and implemented a government-wide enterprise performance framework supporting whole-of-government service and digital policy at TBS.</div>
+        <div class="highlight-item" data-en="Built a risk-based oversight model enabling institutions to shift from compliance tracking to meaningful performance insight." data-fr="Développé un modèle de surveillance fondé sur le risque permettant aux institutions de passer du suivi de conformité à une véritable compréhension de la performance.">Built a risk-based oversight model enabling institutions to shift from compliance tracking to meaningful performance insight.</div>
+        <div class="highlight-item" data-en="Led business readiness and national deployment planning for a $200M+ passport modernization initiative across a national service delivery network." data-fr="Dirigé la préparation opérationnelle et la planification du déploiement national d'une initiative de modernisation du passeport de plus de 200 M$ à l'échelle du réseau national.">Led business readiness and national deployment planning for a $200M+ passport modernization initiative across a national service delivery network.</div>
+        <div class="highlight-item" data-en="Oversaw development of the Citizen-Centred Service Area of Management under the federal Management Accountability Framework." data-fr="Supervisé l'élaboration du volet Services axés sur les citoyens du Cadre de responsabilisation de gestion du gouvernement fédéral.">Oversaw development of the Citizen-Centred Service Area of Management under the federal Management Accountability Framework.</div>
+        <div class="highlight-item" data-en="Integrated siloed policy domains — IT, cyber, data, IM — into a unified performance framework, improving coherence and reducing duplication." data-fr="Intégré des domaines politiques cloisonnés — TI, cybersécurité, données, GI — dans un cadre de performance unifié, améliorant la cohérence et réduisant les chevauchements.">Integrated siloed policy domains — IT, cyber, data, IM — into a unified performance framework, improving coherence and reducing duplication.</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <div class="section-label" id="label-contact">Contact</div>
+      <div class="contact-row">
+        <a class="contact-link" href="mailto:christineyllau@gmail.com">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <span>christineyllau@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/christinelau" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span id="linkedin-text">LinkedIn</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span id="footer-text">Chelsea, QC · Canada</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const content = {
+      en: {
+        tagline: "Public Sector Advisor &nbsp;·&nbsp; Ottawa–Gatineau",
+        labelAbout: "About",
+        bio: "I help governments and organizations design the systems, frameworks, and oversight models that turn policy intent into real outcomes. With over 25 years working at the intersection of public policy, service delivery, and digital governance, I bring a track record of building what lasts — integrated performance architectures, risk-based oversight models, and decision-ready insight for senior leaders navigating complex, multi-organization environments.",
+        labelExpertise: "Areas of Expertise",
+        labelWork: "Selected Work",
+        labelContact: "Contact",
+        linkedinText: "LinkedIn",
+        footer: "Chelsea, QC · Canada"
+      },
+      fr: {
+        tagline: "Conseillère, secteur public &nbsp;·&nbsp; Ottawa–Gatineau",
+        labelAbout: "À propos",
+        bio: "J'aide les gouvernements et les organisations à concevoir les systèmes, cadres et modèles de surveillance qui transforment les intentions politiques en résultats concrets. Avec plus de 25 ans d'expérience à l'intersection des politiques publiques, de la prestation de services et de la gouvernance numérique, j'ai un bilan éprouvé dans la création de structures durables — architectures de performance intégrées, modèles de surveillance fondés sur le risque et analyses prêtes à l'emploi pour les dirigeants naviguant dans des environnements complexes et multiorganisationnels.",
+        labelExpertise: "Domaines d'expertise",
+        labelWork: "Réalisations choisies",
+        labelContact: "Contact",
+        linkedinText: "LinkedIn",
+        footer: "Chelsea, QC · Canada"
+      }
+    };
+
+    function setLang(lang) {
+      const c = content[lang];
+      document.getElementById('tagline').innerHTML = c.tagline;
+      document.getElementById('label-about').childNodes[0].textContent = c.labelAbout;
+      document.getElementById('bio-text').textContent = c.bio;
+      document.getElementById('label-expertise').childNodes[0].textContent = c.labelExpertise;
+      document.getElementById('label-work').childNodes[0].textContent = c.labelWork;
+      document.getElementById('label-contact').childNodes[0].textContent = c.labelContact;
+      document.getElementById('linkedin-text').textContent = c.linkedinText;
+      document.getElementById('footer-text').textContent = c.footer;
+
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.documentElement.lang = lang;
+    }
+  </script>
+
+</body>
+</html>
