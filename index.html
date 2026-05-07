@@ -17,6 +17,7 @@
       --warm: #c8b89a;
       --accent: #5c4f3a;
       --line: #ddd8d0;
+      --white: #ffffff;
     }
 
     html { scroll-behavior: smooth; }
@@ -45,7 +46,6 @@
 
     .lang-toggle {
       display: flex;
-      gap: 0;
       font-family: 'Jost', sans-serif;
       font-size: 0.75rem;
       font-weight: 500;
@@ -77,13 +77,17 @@
 
     /* LAYOUT */
     .page {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 7rem 2.5rem 5rem;
     }
 
     /* HEADER */
     header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
       padding-bottom: 3.5rem;
       border-bottom: 1px solid var(--line);
       margin-bottom: 3.5rem;
@@ -99,15 +103,75 @@
       letter-spacing: 0.04em;
       line-height: 1.1;
       color: var(--ink);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .tagline {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--stone);
+      margin-bottom: 1rem;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+
+    /* PHOTO */
+    .photo-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--line);
+      border: 3px solid var(--warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      margin-bottom: 3.5rem;
+      padding: 2rem 2.5rem;
+      border-left: 3px solid var(--warm);
+      background: var(--white);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.8s ease forwards 0.22s;
+    }
+
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.28rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--accent);
     }
 
     /* SECTIONS */
@@ -118,10 +182,12 @@
       animation: fadeUp 0.8s ease forwards;
     }
 
-    section:nth-child(1) { animation-delay: 0.25s; }
-    section:nth-child(2) { animation-delay: 0.4s; }
-    section:nth-child(3) { animation-delay: 0.55s; }
-    section:nth-child(4) { animation-delay: 0.7s; }
+    section:nth-child(1) { animation-delay: 0.35s; }
+    section:nth-child(2) { animation-delay: 0.48s; }
+    section:nth-child(3) { animation-delay: 0.61s; }
+    section:nth-child(4) { animation-delay: 0.74s; }
+    section:nth-child(5) { animation-delay: 0.87s; }
+    section:nth-child(6) { animation-delay: 1.0s; }
 
     .section-label {
       font-size: 0.7rem;
@@ -142,12 +208,67 @@
       background: var(--line);
     }
 
+    /* BIO */
     .bio {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.15rem, 2.2vw, 1.35rem);
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--ink);
+    }
+
+    /* WORKING WITH */
+    .working-with-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    .working-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .working-col {
+      padding: 1.4rem 1.6rem;
+      border-right: 1px solid var(--line);
+    }
+
+    .working-col:last-child { border-right: none; }
+
+    .working-col-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 0.9rem;
+    }
+
+    .working-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .working-col ul li {
+      font-size: 0.88rem;
+      color: var(--accent);
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .working-col ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--warm);
+      font-size: 0.75rem;
     }
 
     /* EXPERTISE GRID */
@@ -169,15 +290,12 @@
       transition: background 0.2s;
     }
 
-    .expertise-item:hover {
-      background: white;
-    }
+    .expertise-item:hover { background: var(--white); }
 
     /* HIGHLIGHTS */
     .highlights {
       display: flex;
       flex-direction: column;
-      gap: 0;
       border-left: 2px solid var(--warm);
     }
 
@@ -188,9 +306,7 @@
       color: var(--ink);
     }
 
-    .highlight-item:last-child {
-      border-bottom: none;
-    }
+    .highlight-item:last-child { border-bottom: none; }
 
     /* CONTACT */
     .contact-row {
@@ -243,9 +359,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       .page { padding: 6rem 1.5rem 4rem; }
+      header { grid-template-columns: 1fr; }
+      .photo-circle { display: none; }
       .expertise-grid { grid-template-columns: 1fr; }
+      .working-cols { grid-template-columns: 1fr; }
+      .working-col { border-right: none; border-bottom: 1px solid var(--line); }
+      .working-col:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -263,22 +384,62 @@
 
     <!-- HEADER -->
     <header>
-      <h1 class="name">Christine Lau</h1>
-      <p class="tagline" id="tagline">Public Sector Advisor &nbsp;·&nbsp; Ottawa–Gatineau</p>
+      <div class="header-text">
+        <h1 class="name">Christine Lau</h1>
+        <p class="tagline" id="tagline">Public Sector Advisor &nbsp;·&nbsp; Ottawa–Gatineau</p>
+        <p class="headline" id="headline">Building What Lasts.</p>
+      </div>
+      <div class="photo-circle">
+        <!-- When ready, replace the div below with: <img src="photo.jpg" alt="Christine Lau" /> -->
+        <div class="photo-placeholder">Photo<br>coming<br>soon</div>
+      </div>
     </header>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote">
+      <p id="pull-quote-text">"The gap between policy intent and real outcomes isn't a communication problem. It's a systems problem — and it's solvable."</p>
+    </div>
 
     <!-- BIO -->
     <section>
       <div class="section-label" id="label-about">About</div>
       <p class="bio" id="bio-text">
-        I help governments and organizations design the systems, frameworks, and oversight models that turn policy intent into real outcomes. With over 25 years working at the intersection of public policy, service delivery, and digital governance, I bring a track record of building what lasts — integrated performance architectures, risk-based oversight models, and decision-ready insight for senior leaders navigating complex, multi-organization environments.
+        I've spent 25 years in the rooms where policy meets delivery — building the frameworks, oversight models, and performance architectures that help governments turn intent into real outcomes. My work sits at the intersection of public policy, service design, and digital governance, and I've had the privilege of doing it across some of Canada's most complex multi-organization environments.
       </p>
+    </section>
+
+    <!-- WORKING WITH -->
+    <section>
+      <div class="section-label" id="label-working">Working Together</div>
+      <p class="working-with-text" id="working-text">
+        I work with senior leaders who need a trusted, experienced hand — someone who understands how governments actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new governance model, untangling a fragmented performance system, or advising on a complex strategic challenge, I bring rigour, judgment, and practical focus to every engagement.
+      </p>
+      <div class="working-cols">
+        <div class="working-col">
+          <div class="working-col-title" id="col1-title">Strategy &amp; Governance</div>
+          <ul>
+            <li data-en="Performance &amp; oversight framework design" data-fr="Conception de cadres de performance et de surveillance">Performance &amp; oversight framework design</li>
+            <li data-en="Risk-based governance models" data-fr="Modèles de gouvernance fondés sur le risque">Risk-based governance models</li>
+            <li data-en="Service &amp; digital policy advisory" data-fr="Conseils en politique numérique et de service">Service &amp; digital policy advisory</li>
+            <li data-en="Executive decision support" data-fr="Soutien à la décision exécutive">Executive decision support</li>
+          </ul>
+        </div>
+        <div class="working-col">
+          <div class="working-col-title" id="col2-title">Planning &amp; Delivery</div>
+          <ul>
+            <li data-en="Cross-system integration" data-fr="Intégration intersystèmes">Cross-system integration</li>
+            <li data-en="Organizational alignment &amp; change" data-fr="Alignement organisationnel et changement">Organizational alignment &amp; change</li>
+            <li data-en="Large-scale program readiness" data-fr="Préparation aux programmes d'envergure">Large-scale program readiness</li>
+            <li data-en="Strategic planning &amp; reporting" data-fr="Planification stratégique et rapport">Strategic planning &amp; reporting</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- EXPERTISE -->
     <section>
       <div class="section-label" id="label-expertise">Areas of Expertise</div>
-      <div class="expertise-grid" id="expertise-grid">
+      <div class="expertise-grid">
         <div class="expertise-item" data-en="Enterprise Performance &amp; Oversight" data-fr="Performance et surveillance d'entreprise">Enterprise Performance &amp; Oversight</div>
         <div class="expertise-item" data-en="Service &amp; Digital Policy" data-fr="Politique numérique et de service">Service &amp; Digital Policy</div>
         <div class="expertise-item" data-en="Risk-Based Governance" data-fr="Gouvernance fondée sur le risque">Risk-Based Governance</div>
@@ -291,7 +452,7 @@
     <!-- SELECTED WORK -->
     <section>
       <div class="section-label" id="label-work">Selected Work</div>
-      <div class="highlights" id="highlights">
+      <div class="highlights">
         <div class="highlight-item" data-en="Designed and implemented a government-wide enterprise performance framework supporting whole-of-government service and digital policy at TBS." data-fr="Conçu et mis en œuvre un cadre de performance d'entreprise à l'échelle du gouvernement, appuyant la politique sur les services et le numérique au SCT.">Designed and implemented a government-wide enterprise performance framework supporting whole-of-government service and digital policy at TBS.</div>
         <div class="highlight-item" data-en="Built a risk-based oversight model enabling institutions to shift from compliance tracking to meaningful performance insight." data-fr="Développé un modèle de surveillance fondé sur le risque permettant aux institutions de passer du suivi de conformité à une véritable compréhension de la performance.">Built a risk-based oversight model enabling institutions to shift from compliance tracking to meaningful performance insight.</div>
         <div class="highlight-item" data-en="Led business readiness and national deployment planning for a $200M+ passport modernization initiative across a national service delivery network." data-fr="Dirigé la préparation opérationnelle et la planification du déploiement national d'une initiative de modernisation du passeport de plus de 200 M$ à l'échelle du réseau national.">Led business readiness and national deployment planning for a $200M+ passport modernization initiative across a national service delivery network.</div>
@@ -304,13 +465,9 @@
     <section>
       <div class="section-label" id="label-contact">Contact</div>
       <div class="contact-row">
-        <a class="contact-link" href="mailto:christineyllau@gmail.com">
+        <a class="contact-link" href="mailto:christine@christinelau.ca">
           <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          <span>christineyllau@gmail.com</span>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/christinelau" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <span id="linkedin-text">LinkedIn</span>
+          <span>christine@christinelau.ca</span>
         </a>
       </div>
     </section>
@@ -326,22 +483,32 @@
     const content = {
       en: {
         tagline: "Public Sector Advisor &nbsp;·&nbsp; Ottawa–Gatineau",
+        headline: "Building What Lasts.",
+        pullQuote: "\u201cThe gap between policy intent and real outcomes isn\u2019t a communication problem. It\u2019s a systems problem \u2014 and it\u2019s solvable.\u201d",
         labelAbout: "About",
-        bio: "I help governments and organizations design the systems, frameworks, and oversight models that turn policy intent into real outcomes. With over 25 years working at the intersection of public policy, service delivery, and digital governance, I bring a track record of building what lasts — integrated performance architectures, risk-based oversight models, and decision-ready insight for senior leaders navigating complex, multi-organization environments.",
+        bio: "I've spent 25 years in the rooms where policy meets delivery — building the frameworks, oversight models, and performance architectures that help governments turn intent into real outcomes. My work sits at the intersection of public policy, service design, and digital governance, and I've had the privilege of doing it across some of Canada's most complex multi-organization environments.",
+        labelWorking: "Working Together",
+        workingText: "I work with senior leaders who need a trusted, experienced hand — someone who understands how governments actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new governance model, untangling a fragmented performance system, or advising on a complex strategic challenge, I bring rigour, judgment, and practical focus to every engagement.",
+        col1Title: "Strategy & Governance",
+        col2Title: "Planning & Delivery",
         labelExpertise: "Areas of Expertise",
         labelWork: "Selected Work",
         labelContact: "Contact",
-        linkedinText: "LinkedIn",
         footer: "Chelsea, QC · Canada"
       },
       fr: {
         tagline: "Conseillère, secteur public &nbsp;·&nbsp; Ottawa–Gatineau",
+        headline: "Bâtir ce qui dure.",
+        pullQuote: "\u00ab\u00a0L\u2019\u00e9cart entre l\u2019intention politique et les r\u00e9sultats concrets n\u2019est pas un probl\u00e8me de communication. C\u2019est un probl\u00e8me syst\u00e9mique \u2014 et il est r\u00e9soluble.\u00a0\u00bb",
         labelAbout: "À propos",
-        bio: "J'aide les gouvernements et les organisations à concevoir les systèmes, cadres et modèles de surveillance qui transforment les intentions politiques en résultats concrets. Avec plus de 25 ans d'expérience à l'intersection des politiques publiques, de la prestation de services et de la gouvernance numérique, j'ai un bilan éprouvé dans la création de structures durables — architectures de performance intégrées, modèles de surveillance fondés sur le risque et analyses prêtes à l'emploi pour les dirigeants naviguant dans des environnements complexes et multiorganisationnels.",
+        bio: "J'ai passé 25 ans dans les espaces où la politique rencontre la mise en œuvre — à concevoir les cadres, les modèles de surveillance et les architectures de performance qui aident les gouvernements à transformer leurs intentions en résultats concrets. Mon travail se situe à l'intersection des politiques publiques, de la conception de services et de la gouvernance numérique, dans certains des environnements multiorganisationnels les plus complexes du Canada.",
+        labelWorking: "Travailler ensemble",
+        workingText: "Je travaille avec des leaders qui ont besoin d'un appui fiable et expérimenté — quelqu'un qui comprend réellement le fonctionnement des gouvernements et peut aider à combler l'écart entre l'état actuel des choses et là où elles doivent être. Qu'il s'agisse de concevoir un nouveau modèle de gouvernance, de démêler un système de performance fragmenté ou de conseiller sur un défi stratégique complexe, j'apporte rigueur, jugement et sens pratique à chaque mandat.",
+        col1Title: "Stratégie et gouvernance",
+        col2Title: "Planification et livraison",
         labelExpertise: "Domaines d'expertise",
         labelWork: "Réalisations choisies",
         labelContact: "Contact",
-        linkedinText: "LinkedIn",
         footer: "Chelsea, QC · Canada"
       }
     };
@@ -349,12 +516,17 @@
     function setLang(lang) {
       const c = content[lang];
       document.getElementById('tagline').innerHTML = c.tagline;
+      document.getElementById('headline').textContent = c.headline;
+      document.getElementById('pull-quote-text').textContent = c.pullQuote;
       document.getElementById('label-about').childNodes[0].textContent = c.labelAbout;
       document.getElementById('bio-text').textContent = c.bio;
+      document.getElementById('label-working').childNodes[0].textContent = c.labelWorking;
+      document.getElementById('working-text').textContent = c.workingText;
+      document.getElementById('col1-title').textContent = c.col1Title;
+      document.getElementById('col2-title').textContent = c.col2Title;
       document.getElementById('label-expertise').childNodes[0].textContent = c.labelExpertise;
       document.getElementById('label-work').childNodes[0].textContent = c.labelWork;
       document.getElementById('label-contact').childNodes[0].textContent = c.labelContact;
-      document.getElementById('linkedin-text').textContent = c.linkedinText;
       document.getElementById('footer-text').textContent = c.footer;
 
       document.querySelectorAll('[data-en]').forEach(el => {
@@ -369,3 +541,4 @@
 
 </body>
 </html>
+
