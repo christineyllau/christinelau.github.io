@@ -1,6 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
+<head><!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christine Lau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #0f1923;
+      --bg: #ffffff;
+      --surface: #eef2f5;
+      --ink: #0f1923;
+      --body: #374f63;
+      --accent: #3d8cb5;
+      --accent-bright: #6ab0d4;
+      --muted: #6e8fa6;
+      --line: #dce4ea;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--body);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* LANGUAGE TOGGLE */
+    .lang-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.85rem 2.5rem;
+      background: var(--dark);
+    }
+
+    .lang-toggle {
+      display: flex;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 0.26rem 0.72rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    .lang-btn:not(.active):hover {
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* HEADER — crisp band, not a full hero */
+    header {
+      background: var(--dark);
+      padding: 5.5rem 0 2.8rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards 0.1s;
+    }
+
+    .header-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .header-left {}
+
+    .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .tagline {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+    }
+
+    .tagline-sub {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      margin-top: 0.22rem;
+    }
+
+    .tagline-bilingual {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+      margin-top: 0.18rem;
+    }
+
+    .header-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .headline {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.2;
+    }
+
+    /* PAGE BODY */
+    .page-body {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2.5rem 5rem;
+    }
+
+    /* PULL QUOTE — first thing in body, below header */
+    .pull-quote-section {
+      padding: 2.8rem 0 0;
+      margin-bottom: 0;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .pull-quote-inner {
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 1.4rem;
+      align-items: start;
+      padding-bottom: 2.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pull-quote-line {
+      background: var(--accent);
+      border-radius: 2px;
+      align-self: stretch;
+      min-height: 2rem;
+    }
+
+    .pull-quote-text {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+      font-weight: 400;
+      line-height: 1.72;
+      color: var(--ink);
+    }
+
+    /* SECTIONS */
+    .section-wrap {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .section-wrap:nth-child(2) { animation-delay: 0.48s; }
+    .section-wrap:nth-child(3) { animation-delay: 0.60s; }
+    .section-wrap:nth-child(4) { animation-delay: 0.72s; }
+    .section-wrap:nth-child(5) { animation-delay: 0.84s; }
+    .section-wrap:nth-child(6) { animation-delay: 0.96s; }
+    .section-wrap:nth-child(7) { animation-delay: 1.08s; }
+
+    .section-white {
+      background: var(--bg);
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-surface {
+      background: var(--surface);
+      padding: 3rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+      margin-left: -2.5rem;
+      margin-right: -2.5rem;
+    }
+
+    .section-label {
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* BIO */
+    .bio {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.06rem, 1.85vw, 1.22rem);
+      font-weight: 400;
+      line-height: 1.82;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .known-for {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--accent);
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--accent);
+      line-height: 1.6;
+    }
+
+    /* WORKING WITH */
+    .working-with-text {
+      font-size: 0.94rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--body);
+      margin-bottom: 1.8rem;
+    }
+
+    .working-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .working-col {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1.5rem 1.6rem;
+    }
+
+    .working-col-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .working-col-desc {
+      font-size: 0.81rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      line-height: 1.5;
+    }
+
+    .working-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .working-col ul li {
+      font-size: 0.86rem;
+      font-weight: 400;
+      color: var(--body);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .working-col ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.22em;
+    }
+
+    /* HIGHLIGHTS */
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .highlight-item {
+      padding: 1.1rem 1.3rem 1.1rem 1.6rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--body);
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+      line-height: 1.6;
+    }
+
+    .highlight-item:hover {
+      border-left-color: var(--accent);
+      background: var(--surface);
+    }
+
+    .highlight-item:last-child { border-bottom: none; }
+
+    /* FEATURED */
+    .featured-link {
+      text-decoration: none;
+      display: block;
+    }
+
+    .featured-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .featured-item:hover {
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+
+    .featured-title {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 0.3rem;
+    }
+
+    .featured-source {
+      font-size: 0.74rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    .featured-arrow {
+      width: 18px; height: 18px;
+      stroke: var(--accent); fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .featured-item:hover .featured-arrow { transform: translate(2px, -2px); }
+
+    /* CONTACT */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.87rem;
+      font-weight: 400;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.15rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--ink);
+      border-color: var(--accent);
+    }
+
+    .contact-link svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer-band {
+      background: var(--dark);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media (max-width: 680px) {
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .header-right { text-align: left; }
+      .working-cols { grid-template-columns: 1fr; }
+      .section-surface { margin-left: -1.4rem; margin-right: -1.4rem; padding-left: 1.4rem; padding-right: 1.4rem; }
+      .page-body { padding-left: 1.4rem; padding-right: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LANGUAGE BAR -->
+  <div class="lang-bar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+
+  <!-- HEADER — crisp band -->
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <h1 class="name">Christine Lau</h1>
+        <p class="tagline" id="tagline">Executive Advisor</p>
+        <p class="tagline-sub" id="tagline-sub">Service &amp; Digital Performance &nbsp;·&nbsp; Public Sector Governance</p>
+        <p class="tagline-bilingual" id="tagline-bilingual">Bilingual &nbsp;·&nbsp; EN / FR</p>
+      </div>
+      <div class="header-right">
+        <p class="headline" id="headline">Building What Lasts.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE BODY -->
+  <div class="page-body">
+
+    <!-- PULL QUOTE — first element in white body -->
+    <div class="pull-quote-section">
+      <div class="pull-quote-inner">
+        <div class="pull-quote-line"></div>
+        <p class="pull-quote-text" id="pull-quote-text">"The gap between policy intent and real outcomes isn't a communication problem. It's a systems problem — and it's solvable."</p>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section-wrap">
+      <div class="section-white">
+        <div class="section-label" id="label-about">About</div>
+        <p class="bio" id="bio-text">My work is about the infrastructure of good government — the performance frameworks, accountability systems, and governance models that determine whether policy actually delivers. I've spent a career building that infrastructure, in both official languages, across some of Canada's most complex multi-organization environments.</p>
+        <p class="known-for" id="known-for-text">Known for building the measurement and accountability systems that make large, complex governments actually work.</p>
+      </div>
+    </div>
+
+    <!-- WORKING TOGETHER -->
+    <div class="section-wrap">
+      <div class="section-surface">
+        <div class="section-label" id="label-working">Working Together</div>
+        <p class="working-with-text" id="working-text">I work with senior leaders who need a trusted, experienced hand — someone who understands how governments actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new performance system, improving service delivery, or advising on a complex governance challenge, I bring rigour, judgment, and practical focus to every engagement.</p>
+        <div class="working-cols">
+          <div class="working-col">
+            <div class="working-col-title" id="col1-title">Service &amp; Digital Performance</div>
+            <div class="working-col-desc" id="col1-desc">Designing the systems and measures that connect service delivery to real outcomes</div>
+            <ul>
+              <li data-en="Service improvement framework design" data-fr="Conception de cadres d'amélioration des services">Service improvement framework design</li>
+              <li data-en="Performance measurement &amp; reporting" data-fr="Mesure du rendement et rapports">Performance measurement &amp; reporting</li>
+              <li data-en="Digital policy advisory" data-fr="Conseils en politique numérique">Digital policy advisory</li>
+              <li data-en="Enterprise oversight models" data-fr="Modèles de surveillance d'entreprise">Enterprise oversight models</li>
+            </ul>
+          </div>
+          <div class="working-col">
+            <div class="working-col-title" id="col2-title">Public Sector Governance</div>
+            <div class="working-col-desc" id="col2-desc">Building accountability structures and decision frameworks that endure</div>
+            <ul>
+              <li data-en="Accountability framework design" data-fr="Conception de cadres de responsabilisation">Accountability framework design</li>
+              <li data-en="Executive advisory &amp; decision support" data-fr="Conseil exécutif et aide à la décision">Executive advisory &amp; decision support</li>
+              <li data-en="Organizational alignment &amp; change" data-fr="Alignement organisationnel et changement">Organizational alignment &amp; change</li>
+              <li data-en="Strategic planning &amp; corporate reporting" data-fr="Planification stratégique et rapports ministériels">Strategic planning &amp; corporate reporting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELECTED WORK -->
+    <div class="section-wrap">
+      <div class="section-white">
+        <div class="section-label" id="label-work">Selected Work</div>
+        <div class="highlights">
+          <div class="highlight-item" data-en="Designed and implemented an enterprise performance framework for the entire core federal public service — spanning 100+ organizations — supporting whole-of-government service and digital policy." data-fr="Conçu et mis en œuvre un cadre de performance d'entreprise pour l'ensemble de la fonction publique fédérale — couvrant plus de 100 organisations — à l'appui de la politique gouvernementale sur les services et le numérique.">Designed and implemented an enterprise performance framework for the entire core federal public service — spanning 100+ organizations — supporting whole-of-government service and digital policy.</div>
+          <div class="highlight-item" data-en="Developed an internal service accountability framework encompassing all corporate service lines, improving coherence and enabling evidence-based management decisions." data-fr="Élaboré un cadre de responsabilisation des services internes couvrant l'ensemble des services ministériels, améliorant la cohérence et permettant des décisions de gestion fondées sur des données probantes.">Developed an internal service accountability framework encompassing all corporate service lines, improving coherence and enabling evidence-based management decisions.</div>
+          <div class="highlight-item" data-en="Led business readiness and national deployment planning for a passport modernization initiative, ensuring service continuity across a coast-to-coast delivery network." data-fr="Dirigé la préparation opérationnelle et le déploiement national d'une initiative de modernisation du passeport, assurant la continuité des services à l'échelle du réseau de prestation national.">Led business readiness and national deployment planning for a passport modernization initiative, ensuring service continuity across a coast-to-coast delivery network.</div>
+          <div class="highlight-item" data-en="Built a risk-based oversight model enabling federal institutions to shift from compliance tracking to meaningful performance insight." data-fr="Développé un modèle de surveillance fondé sur le risque permettant aux institutions fédérales de passer du suivi de conformité à une véritable compréhension de la performance.">Built a risk-based oversight model enabling federal institutions to shift from compliance tracking to meaningful performance insight.</div>
+          <div class="highlight-item" data-en="Integrated siloed policy domains — IT, cyber, data, IM — into a unified performance framework, improving coherence and reducing duplication across the federal enterprise." data-fr="Intégré des domaines politiques cloisonnés — TI, cybersécurité, données, GI — dans un cadre de performance unifié, améliorant la cohérence et réduisant les chevauchements à l'échelle de l'entreprise fédérale.">Integrated siloed policy domains — IT, cyber, data, IM — into a unified performance framework, improving coherence and reducing duplication across the federal enterprise.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="section-wrap">
+      <div class="section-surface">
+        <div class="section-label" id="label-featured">Featured</div>
+        <a class="featured-link" href="https://www.teachingpublicservice.digital/case-study-christine-lau" target="_blank" rel="noopener">
+          <div class="featured-item">
+            <div class="featured-text">
+              <div class="featured-title" id="featured-title">Case study: Building enterprise digital performance measurement in the Canadian federal government</div>
+              <div class="featured-source" id="featured-source">Teaching Public Service in the Digital Age</div>
+            </div>
+            <svg viewBox="0 0 24 24" class="featured-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section-wrap">
+      <div class="section-white">
+        <div class="section-label" id="label-contact">Contact</div>
+        <div class="contact-row">
+          <a class="contact-link" href="mailto:christine@christinelau.ca">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <span>christine@christinelau.ca</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-band">
+    <div class="footer-inner">
+      <span id="footer-text">Chelsea, QC · Canada</span>
+    </div>
+  </div>
+
+  <script>
+    const content = {
+      en: {
+        tagline: "Executive Advisor",
+        taglineSub: "Service & Digital Performance \u00b7 Public Sector Governance",
+        taglineBilingual: "Bilingual \u00b7 EN / FR",
+        headline: "Building What Lasts.",
+        pullQuote: "\u201cThe gap between policy intent and real outcomes isn\u2019t a communication problem. It\u2019s a systems problem \u2014 and it\u2019s solvable.\u201d",
+        labelAbout: "About",
+        bio: "My work is about the infrastructure of good government \u2014 the performance frameworks, accountability systems, and governance models that determine whether policy actually delivers. I\u2019ve spent a career building that infrastructure, in both official languages, across some of Canada\u2019s most complex multi-organization environments.",
+        knownFor: "Known for building the measurement and accountability systems that make large, complex governments actually work.",
+        labelWorking: "Working Together",
+        workingText: "I work with senior leaders who need a trusted, experienced hand \u2014 someone who understands how governments actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new performance system, improving service delivery, or advising on a complex governance challenge, I bring rigour, judgment, and practical focus to every engagement.",
+        col1Title: "Service & Digital Performance",
+        col1Desc: "Designing the systems and measures that connect service delivery to real outcomes",
+        col2Title: "Public Sector Governance",
+        col2Desc: "Building accountability structures and decision frameworks that endure",
+        labelWork: "Selected Work",
+        labelFeatured: "Featured",
+        featuredTitle: "Case study: Building enterprise digital performance measurement in the Canadian federal government",
+        featuredSource: "Teaching Public Service in the Digital Age",
+        labelContact: "Contact",
+        footer: "Chelsea, QC \u00b7 Canada"
+      },
+      fr: {
+        tagline: "Conseill\u00e8re ex\u00e9cutive",
+        taglineSub: "Performance num\u00e9rique et des services \u00b7 Gouvernance du secteur public",
+        taglineBilingual: "Bilingue \u00b7 FR / EN",
+        headline: "B\u00e2tir ce qui dure.",
+        pullQuote: "\u00ab\u00a0L\u2019\u00e9cart entre l\u2019intention politique et les r\u00e9sultats concrets n\u2019est pas un probl\u00e8me de communication. C\u2019est un probl\u00e8me syst\u00e9mique \u2014 et il est r\u00e9soluble.\u00a0\u00bb",
+        labelAbout: "\u00c0 propos",
+        bio: "Mon travail porte sur l\u2019infrastructure d\u2019une bonne gouvernance \u2014 les cadres de performance, les syst\u00e8mes de responsabilisation et les mod\u00e8les de gouvernance qui d\u00e9terminent si les politiques produisent r\u00e9ellement des r\u00e9sultats. J\u2019ai pass\u00e9 une carri\u00e8re \u00e0 b\u00e2tir cette infrastructure, dans les deux langues officielles, dans certains des environnements multiorganisationnels les plus complexes du Canada.",
+        knownFor: "Reconnue pour avoir b\u00e2ti les syst\u00e8mes de mesure et de responsabilisation qui permettent aux gouvernements complexes de r\u00e9ellement fonctionner.",
+        labelWorking: "Travailler ensemble",
+        workingText: "Je travaille avec des leaders qui ont besoin d\u2019un appui fiable et exp\u00e9riment\u00e9 \u2014 quelqu\u2019un qui comprend r\u00e9ellement le fonctionnement des gouvernements et peut aider \u00e0 combler l\u2019\u00e9cart entre l\u2019\u00e9tat actuel et l\u00e0 o\u00f9 les choses doivent \u00eatre. Qu\u2019il s\u2019agisse de concevoir un nouveau syst\u00e8me de performance, d\u2019am\u00e9liorer la prestation de services ou de conseiller sur un d\u00e9fi de gouvernance complexe, j\u2019apporte rigueur, jugement et sens pratique \u00e0 chaque mandat.",
+        col1Title: "Performance num\u00e9rique et des services",
+        col1Desc: "Concevoir les syst\u00e8mes et les mesures qui relient la prestation de services aux r\u00e9sultats concrets",
+        col2Title: "Gouvernance du secteur public",
+        col2Desc: "B\u00e2tir des structures de responsabilisation et des cadres d\u00e9cisionnels durables",
+        labelWork: "R\u00e9alisations choisies",
+        labelFeatured: "En vedette",
+        featuredTitle: "\u00c9tude de cas\u00a0: \u00e9laboration d\u2019un cadre de mesure de la performance num\u00e9rique \u00e0 l\u2019\u00e9chelle du gouvernement f\u00e9d\u00e9ral canadien",
+        featuredSource: "Teaching Public Service in the Digital Age",
+        labelContact: "Contact",
+        footer: "Chelsea, QC \u00b7 Canada"
+      }
+    };
+
+    function setLang(lang) {
+      const c = content[lang];
+      document.getElementById('tagline').textContent = c.tagline;
+      document.getElementById('tagline-sub').innerHTML = c.taglineSub;
+      document.getElementById('tagline-bilingual').textContent = c.taglineBilingual;
+      document.getElementById('headline').textContent = c.headline;
+      document.getElementById('pull-quote-text').textContent = c.pullQuote;
+      document.getElementById('label-about').childNodes[0].textContent = c.labelAbout;
+      document.getElementById('bio-text').textContent = c.bio;
+      document.getElementById('known-for-text').textContent = c.knownFor;
+      document.getElementById('label-working').childNodes[0].textContent = c.labelWorking;
+      document.getElementById('working-text').textContent = c.workingText;
+      document.getElementById('col1-title').textContent = c.col1Title;
+      document.getElementById('col1-desc').textContent = c.col1Desc;
+      document.getElementById('col2-title').textContent = c.col2Title;
+      document.getElementById('col2-desc').textContent = c.col2Desc;
+      document.getElementById('label-work').childNodes[0].textContent = c.labelWork;
+      document.getElementById('label-featured').childNodes[0].textContent = c.labelFeatured;
+      document.getElementById('featured-title').textContent = c.featuredTitle;
+      document.getElementById('featured-source').textContent = c.featuredSource;
+      document.getElementById('label-contact').childNodes[0].textContent = c.labelContact;
+      document.getElementById('footer-text').textContent = c.footer;
+
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.documentElement.lang = lang;
+    }
+  </script>
+
+</body>
+</html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Christine Lau</title>
