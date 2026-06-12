@@ -16,8 +16,8 @@
       --surface: #f7f4ee;
       --ink: #0f1923;
       --body: #3a3528;
-      --accent: #c9a84c;
-      --accent-bright: #e2c97e;
+      --accent: #C4622D;
+      --accent-bright: #D4845A;
       --muted: #8c7e5e;
       --line: #e8e2d4;
       --white: #ffffff;
@@ -35,7 +35,6 @@
       min-height: 100vh;
     }
 
-    /* LANGUAGE TOGGLE */
     .lang-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -67,19 +66,12 @@
       transition: all 0.2s;
     }
 
-    .lang-btn.active {
-      background: var(--accent);
-      color: white;
-    }
+    .lang-btn.active { background: var(--accent); color: white; }
+    .lang-btn:not(.active):hover { color: white; background: rgba(255,255,255,0.08); }
 
-    .lang-btn:not(.active):hover {
-      color: white;
-      background: rgba(255,255,255,0.08);
-    }
-
-    /* HEADER — crisp band, not a full hero */
     header {
       background: var(--dark);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       padding: 5.5rem 0 2.8rem;
       opacity: 0;
       animation: fadeIn 0.8s ease forwards 0.1s;
@@ -95,8 +87,6 @@
       gap: 2rem;
     }
 
-    .header-left {}
-
     .name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
@@ -107,36 +97,11 @@
       margin-bottom: 0.75rem;
     }
 
-    .tagline {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-bright);
-    }
+    .tagline { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-bright); }
+    .tagline-sub { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.82); margin-top: 0.22rem; }
+    .tagline-bilingual { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-top: 0.18rem; }
 
-    .tagline-sub {
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
-      margin-top: 0.22rem;
-    }
-
-    .tagline-bilingual {
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.62);
-      margin-top: 0.18rem;
-    }
-
-    .header-right {
-      text-align: right;
-      flex-shrink: 0;
-    }
+    .header-right { text-align: right; flex-shrink: 0; }
 
     .headline {
       font-family: 'Playfair Display', serif;
@@ -147,48 +112,10 @@
       line-height: 1.2;
     }
 
-    /* PAGE BODY */
-    .page-body {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 0 2.5rem 5rem;
-    }
+    .page-body { max-width: 920px; margin: 0 auto; padding: 0 2.5rem 5rem; }
 
-    /* PULL QUOTE — first thing in body, below header */
-    .pull-quote-section {
-      padding: 2.8rem 0 0;
-      margin-bottom: 0;
-      opacity: 0;
-      transform: translateY(14px);
-      animation: fadeUp 0.7s ease forwards 0.35s;
-    }
+    .pull-quote-section { display: none; }
 
-    .pull-quote-inner {
-      display: grid;
-      grid-template-columns: 3px 1fr;
-      gap: 1.4rem;
-      align-items: start;
-      padding-bottom: 2.8rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .pull-quote-line {
-      background: var(--accent);
-      border-radius: 2px;
-      align-self: stretch;
-      min-height: 2rem;
-    }
-
-    .pull-quote-text {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(1.05rem, 2vw, 1.22rem);
-      font-weight: 400;
-      line-height: 1.72;
-      color: var(--ink);
-    }
-
-    /* SECTIONS */
     .section-wrap {
       opacity: 0;
       transform: translateY(14px);
@@ -201,19 +128,14 @@
     .section-wrap:nth-child(5) { animation-delay: 0.84s; }
     .section-wrap:nth-child(6) { animation-delay: 0.96s; }
     .section-wrap:nth-child(7) { animation-delay: 1.08s; }
+    .section-wrap:nth-child(8) { animation-delay: 1.20s; }
 
-    .section-white {
-      background: var(--bg);
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--line);
-    }
+    .section-white { background: var(--bg); padding: 3.5rem 0; border-bottom: 1px solid var(--line); }
 
     .section-surface {
-      background: var(--surface);
-      padding: 3rem 2.5rem;
+      background: var(--bg);
+      padding: 3.5rem 0;
       border-bottom: 1px solid var(--line);
-      margin-left: -2.5rem;
-      margin-right: -2.5rem;
     }
 
     .section-label {
@@ -228,46 +150,49 @@
       gap: 0.8rem;
     }
 
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
-    /* BIO */
-    .bio {
+    /* ASYMMETRIC ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-quote {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.06rem, 1.85vw, 1.22rem);
+      font-style: italic;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
       font-weight: 400;
-      line-height: 1.82;
+      line-height: 1.45;
       color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .about-quote em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .bio {
+      font-size: clamp(0.92rem, 1.5vw, 1.02rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--body);
       margin-bottom: 1.5rem;
     }
-
     .known-for {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 400;
       color: var(--accent);
       padding-left: 1.1rem;
       border-left: 2px solid var(--accent);
       line-height: 1.6;
     }
-
-    /* WORKING WITH */
-    .working-with-text {
-      font-size: 0.94rem;
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--body);
-      margin-bottom: 1.8rem;
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-quote { font-size: clamp(1.3rem, 5vw, 1.7rem); }
     }
 
-    .working-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
+    .working-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
     .working-col {
       background: var(--white);
@@ -276,14 +201,7 @@
       padding: 1.5rem 1.6rem;
     }
 
-    .working-col-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-    }
+    .working-col-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
 
     .working-col-desc {
       font-size: 0.81rem;
@@ -295,12 +213,7 @@
       line-height: 1.5;
     }
 
-    .working-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
+    .working-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
 
     .working-col ul li {
       font-size: 0.86rem;
@@ -310,48 +223,183 @@
       position: relative;
     }
 
-    .working-col ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.7rem;
-      top: 0.22em;
-    }
+    .working-col ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.22em; }
 
-    /* HIGHLIGHTS */
-    .highlights {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      overflow: hidden;
-      background: var(--white);
-    }
+    /* NUMBERED SELECTED WORK */
+    .highlights { display: flex; flex-direction: column; gap: 0; }
 
     .highlight-item {
-      padding: 1.1rem 1.3rem 1.1rem 1.6rem;
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.2rem;
+      align-items: baseline;
+      padding: 1.4rem 0;
       border-bottom: 1px solid var(--line);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 300;
       color: var(--body);
-      border-left: 3px solid transparent;
-      transition: border-color 0.2s, background 0.2s;
+      line-height: 1.65;
+      counter-increment: highlight-counter;
+      transition: color 0.2s;
+    }
+
+    .highlight-item:first-child { border-top: 1px solid var(--line); }
+    .highlight-item:last-child { border-bottom: 1px solid var(--line); }
+
+    .highlight-item::before {
+      content: counter(highlight-counter, decimal-leading-zero);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: rgba(196,98,45,0.22);
+      line-height: 1;
+      transition: color 0.2s;
+      padding-top: 0.15rem;
+    }
+
+    .highlight-item:hover { color: var(--ink); }
+    .highlight-item:hover::before { color: var(--accent); }
+
+    .highlights { counter-reset: highlight-counter; }
+
+    /* WRITING SECTION */
+    /* STICKY NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 90;
+      background: rgba(26, 26, 46, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      padding: 0 2.5rem;
+    }
+    .site-nav.visible { transform: translateY(0); }
+    .site-nav-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 48px;
+    }
+    .site-nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+    }
+    .site-nav-links { display: flex; gap: 2rem; list-style: none; }
+    .site-nav-links a {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .site-nav-links a:hover,
+    .site-nav-links a.active { color: var(--accent-bright); border-bottom-color: var(--accent); }
+
+    /* WRITING CARDS */
+    .writing-intro {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
       line-height: 1.6;
     }
-
-    .highlight-item:hover {
-      border-left-color: var(--accent);
-      background: var(--surface);
+    .writing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
     }
-
-    .highlight-item:last-child { border-bottom: none; }
+    .writing-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 1.8rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .writing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .writing-card:hover {
+      border-color: rgba(196,98,45,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transform: translateY(-3px);
+    }
+    .writing-card:hover::before { transform: scaleX(1); }
+    .writing-card-source {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+    .writing-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.5;
+      margin-bottom: 0.9rem;
+      flex-grow: 1;
+    }
+    .writing-card-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+    .writing-card-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: gap 0.2s;
+    }
+    .writing-card:hover .writing-card-read { gap: 0.7rem; }
+    .writing-card-read svg {
+      width: 13px; height: 13px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 680px) {
+      .writing-cards { grid-template-columns: 1fr; }
+      .site-nav-links { gap: 1.2rem; }
+      .site-nav-name { display: none; }
+    }
 
     /* FEATURED */
-    .featured-link {
-      text-decoration: none;
-      display: block;
-    }
+    .featured-link { text-decoration: none; display: block; margin-bottom: 0.75rem; }
+    .featured-link:last-child { margin-bottom: 0; }
 
     .featured-item {
       display: flex;
@@ -365,25 +413,10 @@
       transition: border-color 0.2s, background 0.2s;
     }
 
-    .featured-item:hover {
-      border-color: var(--accent);
-      background: var(--surface);
-    }
+    .featured-item:hover { border-color: var(--accent); background: var(--surface); }
 
-    .featured-title {
-      font-size: 0.92rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.5;
-      margin-bottom: 0.3rem;
-    }
-
-    .featured-source {
-      font-size: 0.74rem;
-      font-weight: 400;
-      color: var(--accent);
-      letter-spacing: 0.03em;
-    }
+    .featured-title { font-size: 0.92rem; font-weight: 400; color: var(--ink); line-height: 1.5; margin-bottom: 0.3rem; }
+    .featured-source { font-size: 0.74rem; font-weight: 400; color: var(--accent); letter-spacing: 0.03em; }
 
     .featured-arrow {
       width: 18px; height: 18px;
@@ -397,46 +430,7 @@
     .featured-item:hover .featured-arrow { transform: translate(2px, -2px); }
 
     /* CONTACT */
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      align-items: center;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.87rem;
-      font-weight: 400;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 0.15rem;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .contact-link:hover {
-      color: var(--ink);
-      border-color: var(--accent);
-    }
-
-    .contact-link svg {
-      width: 14px; height: 14px;
-      stroke: currentColor; fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round; stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
-    /* CONTACT FORM */
-    .contact-form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 3rem;
-      align-items: start;
-    }
+    .contact-form-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
 
     .contact-hook {
       font-family: 'Playfair Display', serif;
@@ -448,39 +442,11 @@
       margin-bottom: 1.2rem;
     }
 
-    .contact-sub {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .contact-inline-link {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      transition: border-color 0.2s;
-    }
-
-    .contact-inline-link:hover { border-color: var(--accent); }
-
-    .form-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
     .form-group:last-of-type { margin-bottom: 0; }
 
-    .form-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    .form-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 
     .form-input {
       background: var(--white);
@@ -498,17 +464,8 @@
 
     .form-input:focus { border-color: var(--accent); }
     .form-input::placeholder { color: var(--muted); opacity: 0.6; }
-
     .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c7e5e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.2rem; }
-
     .form-textarea { min-height: 120px; resize: vertical; }
-
-    .form-hint {
-      font-size: 0.75rem;
-      font-style: italic;
-      color: var(--muted);
-      margin-top: 0.35rem;
-    }
 
     .form-submit {
       margin-top: 1.2rem;
@@ -526,34 +483,10 @@
     }
 
     .form-submit:hover { background: #2d2d4a; }
+    .form-success { margin-top: 1rem; font-size: 0.88rem; color: var(--accent); font-style: italic; }
 
-    .form-success {
-      margin-top: 1rem;
-      font-size: 0.88rem;
-      color: var(--accent);
-      font-style: italic;
-    }
-
-    @media (max-width: 680px) {
-      .contact-form-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .form-row-2 { grid-template-columns: 1fr; }
-    }
-
-    /* FOOTER */
-    .footer-band {
-      background: var(--dark);
-      padding: 2rem 0;
-      margin-top: 4rem;
-    }
-
-    .footer-inner {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 0.06em;
-    }
+    .footer-band { background: var(--dark); padding: 2rem 0; margin-top: 4rem; }
+    .footer-inner { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; }
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
@@ -564,12 +497,13 @@
       .working-cols { grid-template-columns: 1fr; }
       .section-surface { margin-left: -1.4rem; margin-right: -1.4rem; padding-left: 1.4rem; padding-right: 1.4rem; }
       .page-body { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .contact-form-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .form-row-2 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- LANGUAGE BAR -->
   <div class="lang-bar">
     <div class="lang-toggle">
       <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
@@ -577,7 +511,6 @@
     </div>
   </div>
 
-  <!-- HEADER — crisp band -->
   <header>
     <div class="header-inner">
       <div class="header-left">
@@ -592,31 +525,26 @@
     </div>
   </header>
 
-  <!-- PAGE BODY -->
   <div class="page-body">
 
-    <!-- PULL QUOTE — first element in white body -->
-    <div class="pull-quote-section">
-      <div class="pull-quote-inner">
-        <div class="pull-quote-line"></div>
-        <p class="pull-quote-text" id="pull-quote-text">"The gap between policy intent and real outcomes isn't a communication problem. It's a systems problem — and it's solvable."</p>
-      </div>
-    </div>
-
     <!-- ABOUT -->
-    <div class="section-wrap">
+    <div class="section-wrap" id="about">
       <div class="section-white">
         <div class="section-label" id="label-about">About</div>
-        <p class="bio" id="bio-text">My work is about making governments deliver — building the performance systems, governance structures, and accountability frameworks that close the gap between what policy promises and what people actually experience. I've spent a career doing this work in both official languages, across some of Canada's largest and most complex public sector environments.</p>
-        <p class="known-for" id="known-for-text">Senior leaders bring me in when the stakes are high and the margin for error is low — when they need someone who understands how institutions actually function, not just how they're supposed to.</p>
+        <div class="about-grid">
+          <div class="about-quote" id="pull-quote-text">The gap between policy intent and real outcomes isn&rsquo;t a communication problem. It&rsquo;s a <em>systems problem</em> &mdash; and it&rsquo;s solvable.</div>
+          <div class="about-right">
+            <p class="bio" id="bio-text">My work is about making governments deliver &mdash; building the performance systems, governance structures, and accountability frameworks that close the gap between what policy promises and what people actually experience. I&rsquo;ve spent a career doing this work in both official languages, across some of Canada&rsquo;s largest and most complex public sector environments.</p>
+            <p class="known-for" id="known-for-text">Senior leaders bring me in when the stakes are high and the margin for error is low &mdash; when they need someone who understands how institutions actually function, not just how they&rsquo;re supposed to.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- WORKING TOGETHER -->
-    <div class="section-wrap">
+    <!-- WORKING TOGETHER — intro paragraph removed -->
+    <div class="section-wrap" id="services">
       <div class="section-surface">
         <div class="section-label" id="label-working">Working Together</div>
-        <p class="working-with-text" id="working-text">I work with senior leaders who need a trusted, experienced hand — someone who understands how public sector organizations actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new performance system, strengthening service delivery, or working through a complex governance challenge, I bring rigour, judgment, and practical focus to every engagement.</p>
         <div class="working-cols">
           <div class="working-col">
             <div class="working-col-title" id="col1-title">Service &amp; Digital Performance</div>
@@ -644,28 +572,65 @@
     </div>
 
     <!-- SELECTED WORK -->
-    <div class="section-wrap">
+    <div class="section-wrap" id="work">
       <div class="section-white">
         <div class="section-label" id="label-work">Selected Work</div>
         <div class="highlights">
+          <div class="highlight-item" data-en="Originated the conceptual framework and design architecture behind the Enterprise Health Approach — a risk-based service and digital oversight model informing Canada's Policy on Service and Digital reset." data-fr="Élaboré le cadre conceptuel et l'architecture de conception de l'Approche santé organisationnelle — un modèle de surveillance numérique et des services fondé sur le risque qui oriente la réinitialisation de la Politique sur les services et le numérique du Canada.">Originated the conceptual framework and design architecture behind the Enterprise Health Approach — a risk-based service and digital oversight model informing Canada's Policy on Service and Digital reset.</div>
           <div class="highlight-item" data-en="Led business readiness and national deployment for a major service modernization initiative — coordinating delivery across a coast-to-coast network and ensuring continuity through a high-stakes transition." data-fr="Dirigé la préparation opérationnelle et le déploiement national d'une initiative de modernisation des services — coordonnant la prestation à l'échelle d'un réseau national et assurant la continuité lors d'une transition à enjeux élevés.">Led business readiness and national deployment for a major service modernization initiative — coordinating delivery across a coast-to-coast network and ensuring continuity through a high-stakes transition.</div>
           <div class="highlight-item" data-en="Designed and implemented an enterprise performance framework for the entire core federal public service — spanning 100+ organizations — supporting whole-of-government service and digital policy." data-fr="Conçu et mis en œuvre un cadre de performance d'entreprise pour l'ensemble de la fonction publique fédérale — couvrant plus de 100 organisations — à l'appui de la politique gouvernementale sur les services et le numérique.">Designed and implemented an enterprise performance framework for the entire core federal public service — spanning 100+ organizations — supporting whole-of-government service and digital policy.</div>
           <div class="highlight-item" data-en="Developed an internal service accountability framework encompassing all corporate service lines, improving coherence and enabling evidence-based management decisions." data-fr="Élaboré un cadre de responsabilisation des services internes couvrant l'ensemble des services ministériels, améliorant la cohérence et permettant des décisions de gestion fondées sur des données probantes.">Developed an internal service accountability framework encompassing all corporate service lines, improving coherence and enabling evidence-based management decisions.</div>
-          <div class="highlight-item" data-en="Built a risk-based oversight model enabling federal institutions to shift from compliance tracking to meaningful performance insight." data-fr="Développé un modèle de surveillance fondé sur le risque permettant aux institutions fédérales de passer du suivi de conformité à une véritable compréhension de la performance.">Built a risk-based oversight model enabling federal institutions to shift from compliance tracking to meaningful performance insight.</div>
           <div class="highlight-item" data-en="Unified fragmented policy domains — IT, cyber, data, and information management — into a single performance framework, improving coherence, enabling data interoperability, and eliminating duplication across the federal enterprise." data-fr="Unifié des domaines politiques fragmentés — TI, cybersécurité, données et gestion de l'information — dans un cadre de performance unique, améliorant la cohérence, favorisant l'interopérabilité des données et éliminant les chevauchements à l'échelle de l'entreprise fédérale.">Unified fragmented policy domains — IT, cyber, data, and information management — into a single performance framework, improving coherence, enabling data interoperability, and eliminating duplication across the federal enterprise.</div>
         </div>
       </div>
     </div>
 
+    <!-- WRITING -->
+    <div class="section-wrap" id="writing">
+      <div class="section-white" style="background:var(--dark);padding:3.5rem 0;">
+        <div class="section-label" id="label-writing" style="color:var(--accent-bright);">Writing</div>
+        <p class="writing-intro" id="writing-intro" style="color:rgba(255,255,255,0.45);">On governance, accountability, digital government, and the gap between policy ambitions and what actually gets delivered.</p>
+        <div class="writing-cards">
+          <a class="writing-card" href="https://medium.com/@christinelauca/canada-has-two-ai-strategies-neither-can-tell-you-if-theyre-working-4e5c61173fda" target="_blank" rel="noopener">
+            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; June 2026</div>
+            <div class="writing-card-title">Canada Has Two AI Strategies. Neither Can Tell You If They&rsquo;re Working.</div>
+            <div class="writing-card-desc">Why measurement is the missing discipline in both of Canada&rsquo;s AI strategies &mdash; and why that matters.</div>
+            <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </a>
+          <a class="writing-card" href="https://medium.com/@christinelauca/ai-for-all-the-gap-between-adoption-and-protection-c89494cc0711" target="_blank" rel="noopener">
+            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; June 2026</div>
+            <div class="writing-card-title">AI for All? The Gap Between Adoption and Protection.</div>
+            <div class="writing-card-desc">On the imbalance between Canada&rsquo;s AI adoption ambitions and the protections still under development.</div>
+            <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </a>
+          <a class="writing-card" href="https://medium.com/@christinelauca/the-missing-link-in-canadas-ai-strategies-920fd416924c" target="_blank" rel="noopener">
+            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; May 2026</div>
+            <div class="writing-card-title">The Missing Link in Canada&rsquo;s AI Strategies.</div>
+            <div class="writing-card-desc">What Canada&rsquo;s AI for All strategy doesn&rsquo;t say about how government will act as a coordinated customer, investor, and platform builder.</div>
+            <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- FEATURED -->
-    <div class="section-wrap">
-      <div class="section-surface">
+    <div class="section-wrap" id="featured">
+      <div class="section-white">
         <div class="section-label" id="label-featured">Featured</div>
         <a class="featured-link" href="https://www.teachingpublicservice.digital/case-study-christine-lau" target="_blank" rel="noopener">
           <div class="featured-item">
             <div class="featured-text">
-              <div class="featured-title" id="featured-title">Case study: Building enterprise digital performance measurement in the Canadian federal government</div>
-              <div class="featured-source" id="featured-source">Teaching Public Service in the Digital Age</div>
+              <div class="featured-title" id="featured-title-1">Case study: Building enterprise digital performance measurement in the Canadian federal government</div>
+              <div class="featured-source">Teaching Public Service in the Digital Age &nbsp;·&nbsp; 2025</div>
+            </div>
+            <svg viewBox="0 0 24 24" class="featured-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+        <a class="featured-link" href="https://publicsectornetwork.com/insight/lets-chat-with-treasury-board-of-canada-secretariat-modernizing-the-policy-on-service-and-digital" target="_blank" rel="noopener">
+          <div class="featured-item">
+            <div class="featured-text">
+              <div class="featured-title" id="featured-title-2">Enterprise Health Approach and the modernization of Canada's Policy on Service and Digital</div>
+              <div class="featured-source">Public Sector Network &nbsp;·&nbsp; 2025</div>
             </div>
             <svg viewBox="0 0 24 24" class="featured-arrow"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </div>
@@ -674,7 +639,7 @@
     </div>
 
     <!-- CONTACT -->
-    <div class="section-wrap">
+    <div class="section-wrap" id="contact">
       <div class="section-surface">
         <div class="section-label" id="label-contact">Get in Touch</div>
         <div class="contact-form-grid">
@@ -708,6 +673,7 @@
               <div class="form-group">
                 <label class="form-label" for="cf-message" id="label-message">Tell me more.</label>
                 <textarea class="form-input form-textarea" id="cf-message" name="message" placeholder="Be as specific as you like." required></textarea>
+              </div>
               <button class="form-submit" type="submit" id="form-submit-btn">Send message →</button>
               <p class="form-success" id="form-success" style="display:none;">Thank you — I'll be in touch.</p>
             </form>
@@ -718,7 +684,6 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer-band">
     <div class="footer-inner">
       <span id="footer-text">Ottawa / Gatineau · Canada</span>
@@ -737,15 +702,14 @@
         bio: "My work is about making governments deliver \u2014 building the performance systems, governance structures, and accountability frameworks that close the gap between what policy promises and what people actually experience. I\u2019ve spent a career doing this work in both official languages, across some of Canada\u2019s largest and most complex public sector environments.",
         knownFor: "Senior leaders bring me in when the stakes are high and the margin for error is low \u2014 when they need someone who understands how institutions actually function, not just how they\u2019re supposed to.",
         labelWorking: "Working Together",
-        workingText: "I work with senior leaders who need a trusted, experienced hand \u2014 someone who understands how public sector organizations actually function and can help navigate the gap between where things are and where they need to be. Whether that means designing a new performance system, strengthening service delivery, or working through a complex governance challenge, I bring rigour, judgment, and practical focus to every engagement.",
         col1Title: "Service & Digital Performance",
         col1Desc: "Connecting service delivery to real outcomes through measurement that actually drives decisions",
         col2Title: "Public Sector Governance",
         col2Desc: "Building accountability structures and decision frameworks that hold up under pressure",
         labelWork: "Selected Work",
+        labelWriting: "Writing",
+        writingIntro: "On governance, accountability, digital government, and the gap between policy ambitions and what actually gets delivered.",
         labelFeatured: "Featured",
-        featuredTitle: "Case study: Building enterprise digital performance measurement in the Canadian federal government",
-        featuredSource: "Teaching Public Service in the Digital Age",
         labelContact: "Get in Touch",
         contactHook: "Let\u2019s talk about what\u2019s not working \u2014 and what could.",
         labelName: "Name",
@@ -765,15 +729,14 @@
         bio: "Mon travail consiste \u00e0 faire en sorte que les gouvernements livrent \u2014 en b\u00e2tissant les syst\u00e8mes de performance, les structures de gouvernance et les cadres de responsabilisation qui comblent l\u2019\u00e9cart entre ce que la politique promet et ce que les gens vivent r\u00e9ellement. J\u2019ai pass\u00e9 une carri\u00e8re \u00e0 faire ce travail dans les deux langues officielles, dans certains des environnements du secteur public les plus vastes et les plus complexes du Canada.",
         knownFor: "Les leaders s\u00e9niors font appel \u00e0 moi quand les enjeux sont \u00e9lev\u00e9s et la marge d\u2019erreur est faible \u2014 quand ils ont besoin de quelqu\u2019un qui comprend r\u00e9ellement le fonctionnement des institutions, pas seulement comment elles sont cens\u00e9es fonctionner.",
         labelWorking: "Travailler ensemble",
-        workingText: "Je travaille avec des leaders qui ont besoin d\u2019un appui fiable et exp\u00e9riment\u00e9 \u2014 quelqu\u2019un qui comprend r\u00e9ellement le fonctionnement des organisations du secteur public et peut aider \u00e0 combler l\u2019\u00e9cart entre l\u2019\u00e9tat actuel et l\u00e0 o\u00f9 les choses doivent \u00eatre. Qu\u2019il s\u2019agisse de concevoir un nouveau syst\u00e8me de performance, de renforcer la prestation de services ou de travailler sur un d\u00e9fi de gouvernance complexe, j\u2019apporte rigueur, jugement et sens pratique \u00e0 chaque mandat.",
         col1Title: "Performance num\u00e9rique et des services",
         col1Desc: "Relier la prestation de services aux r\u00e9sultats concrets gr\u00e2ce \u00e0 une mesure qui oriente r\u00e9ellement les d\u00e9cisions",
         col2Title: "Gouvernance du secteur public",
         col2Desc: "B\u00e2tir des structures de responsabilisation et des cadres d\u00e9cisionnels qui r\u00e9sistent \u00e0 l\u2019\u00e9preuve",
         labelWork: "R\u00e9alisations choisies",
+        labelWriting: "\u00c9crits",
+        writingIntro: "Sur la gouvernance, la responsabilisation, le gouvernement num\u00e9rique et l\u2019\u00e9cart entre les ambitions politiques et ce qui est r\u00e9ellement livr\u00e9.",
         labelFeatured: "En vedette",
-        featuredTitle: "\u00c9tude de cas\u00a0: \u00e9laboration d\u2019un cadre de mesure de la performance num\u00e9rique \u00e0 l\u2019\u00e9chelle du gouvernement f\u00e9d\u00e9ral canadien",
-        featuredSource: "Teaching Public Service in the Digital Age",
         labelContact: "Contactez-moi",
         contactHook: "Parlons de ce qui ne fonctionne pas \u2014 et de ce qui pourrait.",
         labelName: "Nom",
@@ -796,15 +759,14 @@
       document.getElementById('bio-text').textContent = c.bio;
       document.getElementById('known-for-text').textContent = c.knownFor;
       document.getElementById('label-working').childNodes[0].textContent = c.labelWorking;
-      document.getElementById('working-text').textContent = c.workingText;
       document.getElementById('col1-title').textContent = c.col1Title;
       document.getElementById('col1-desc').textContent = c.col1Desc;
       document.getElementById('col2-title').textContent = c.col2Title;
       document.getElementById('col2-desc').textContent = c.col2Desc;
       document.getElementById('label-work').childNodes[0].textContent = c.labelWork;
+      document.getElementById('label-writing').childNodes[0].textContent = c.labelWriting;
+      document.getElementById('writing-intro').textContent = c.writingIntro;
       document.getElementById('label-featured').childNodes[0].textContent = c.labelFeatured;
-      document.getElementById('featured-title').textContent = c.featuredTitle;
-      document.getElementById('featured-source').textContent = c.featuredSource;
       document.getElementById('label-contact').childNodes[0].textContent = c.labelContact;
       document.getElementById('footer-text').textContent = c.footer;
       document.getElementById('contact-hook').textContent = c.contactHook;
@@ -827,7 +789,7 @@
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('form-submit-btn');
-      btn.textContent = 'Sending…';
+      btn.textContent = 'Sending\u2026';
       btn.disabled = true;
       try {
         const res = await fetch(form.action, {
@@ -840,14 +802,38 @@
           btn.style.display = 'none';
           document.getElementById('form-success').style.display = 'block';
         } else {
-          btn.textContent = 'Something went wrong — try emailing directly.';
+          btn.textContent = 'Something went wrong \u2014 try emailing directly.';
           btn.disabled = false;
         }
       } catch {
-        btn.textContent = 'Something went wrong — try emailing directly.';
+        btn.textContent = 'Something went wrong \u2014 try emailing directly.';
         btn.disabled = false;
       }
     });
+
+    // Sticky nav
+    const nav = document.getElementById('site-nav');
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('.site-nav-links a');
+    const sections = ['about','services','work','writing','featured','contact'].map(id => document.getElementById(id)).filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    window.addEventListener('scroll', () => {
+      const pastHeader = window.scrollY > header.offsetHeight - 60;
+      nav.classList.toggle('visible', pastHeader);
+    }, { passive: true });
+
   </script>
 
 </body>
