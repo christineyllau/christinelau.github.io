@@ -6,7 +6,7 @@
   <title>Christine Lau</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -28,7 +28,7 @@
     body {
       background: var(--bg);
       color: var(--body);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 300;
       font-size: 16px;
       line-height: 1.7;
@@ -58,7 +58,7 @@
       background: none;
       border: none;
       padding: 0.3rem 0.7rem;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
       font-weight: 500;
       color: var(--muted);
@@ -70,7 +70,7 @@
 
     header {
       background: var(--bg);
-      padding: 6.5rem 0 2.5rem;
+      padding: 8rem 0 4rem;
       opacity: 0;
       animation: fadeIn 0.9s ease forwards 0.1s;
     }
@@ -78,16 +78,16 @@
     .header-inner {
       max-width: 920px;
       margin: 0 auto;
-      padding: 2.4rem 2.5rem;
+      padding: 3.5rem 3rem;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 2rem;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
     }
 
     .name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: clamp(2.3rem, 5vw, 3.4rem);
       font-weight: 400;
       letter-spacing: -0.015em;
@@ -103,7 +103,7 @@
     .header-right { text-align: right; flex-shrink: 0; max-width: 260px; }
 
     .headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-style: italic;
       font-size: clamp(1.2rem, 2.4vw, 1.55rem);
       font-weight: 400;
@@ -111,23 +111,23 @@
       line-height: 1.3;
     }
 
-    .page-body { max-width: 920px; margin: 0 auto; padding: 2.5rem 2.5rem 6rem; }
+    .page-body { max-width: 960px; margin: 0 auto; padding: 3rem 2.5rem 8rem; }
 
     .pull-quote-section { display: none; }
 
-    .section-wrap { margin-bottom: 2.5rem; }
+    .section-wrap { margin-bottom: 4.5rem; }
 
     .section-white, .section-surface { background: transparent; padding: 0; border-bottom: none; }
 
     .section-label {
       display: inline-block;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
       font-weight: 600;
       color: var(--ink);
-      border: 1.5px solid var(--ink);
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 1.6rem;
+      border: 1px solid var(--ink);
+      padding: 0.4rem 0.9rem;
+      margin-bottom: 2.2rem;
     }
 
     .section-label::after { content: none; }
@@ -137,26 +137,26 @@
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 0;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
     }
     .about-quote {
       background: var(--ink);
       color: var(--white);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-style: italic;
+      font-weight: 300;
       font-size: clamp(1.3rem, 2.4vw, 1.7rem);
-      font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.6;
       letter-spacing: -0.005em;
-      padding: 2.4rem;
+      padding: 3.2rem;
     }
     .about-quote em {
       font-style: normal;
       color: #A9C9BB;
     }
     .about-right {
-      padding: 2.4rem;
-      border-left: 2px solid var(--ink);
+      padding: 3.2rem;
+      border-left: 1px solid var(--ink);
     }
     .bio {
       font-size: clamp(0.9rem, 1.5vw, 0.98rem);
@@ -179,14 +179,14 @@
     }
 
     /* WORKING TOGETHER — bordered boxes, one filled */
-    .working-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--ink); }
+    .working-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--ink); }
 
-    .working-col { padding: 2rem; }
-    .working-col:first-child { border-right: 2px solid var(--ink); background: var(--ink); }
+    .working-col { padding: 2.8rem; }
+    .working-col:first-child { border-right: 1px solid var(--ink); background: var(--white); }
     .working-col:first-child .working-col-title,
-    .working-col:first-child ul li { color: var(--white); }
-    .working-col:first-child .working-col-desc { color: rgba(255,255,255,0.6); border-bottom-color: rgba(255,255,255,0.25); }
-    .working-col:first-child ul li::before { color: #A9C9BB; }
+    .working-col:first-child ul li { color: var(--ink); }
+    .working-col:first-child .working-col-desc { color: var(--muted); border-bottom-color: var(--line); }
+    .working-col:first-child ul li::before { color: var(--accent); }
 
     .working-col-title { font-size: 0.98rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
 
@@ -221,21 +221,21 @@
     .highlights {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: -2px;
-      border: 2px solid var(--ink);
+      gap: -1px;
+      border: 1px solid var(--ink);
     }
 
     .highlight-item {
-      padding: 1.7rem;
-      border: 1px solid var(--ink);
+      padding: 2.2rem;
+      border: 1px solid var(--line);
       margin: -1px;
       font-size: 0.92rem;
       font-weight: 300;
       color: var(--body);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
-    .highlight-item:first-child { grid-column: 1 / -1; background: var(--surface); font-size: 0.98rem; }
+    .highlight-item:first-child { grid-column: 1 / -1; background: var(--white); font-size: 1rem; }
 
     @media (max-width: 680px) {
       .highlights { grid-template-columns: 1fr; }
@@ -265,7 +265,7 @@
       height: 52px;
     }
     .site-nav-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.98rem;
       font-weight: 400;
       color: var(--ink);
@@ -297,16 +297,16 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
     }
     .writing-card {
       display: flex;
       flex-direction: column;
       background: var(--bg);
-      border: 1px solid var(--ink);
+      border: 1px solid var(--line);
       margin: -1px;
       border-radius: 0;
-      padding: 1.8rem;
+      padding: 2.4rem;
       text-decoration: none;
       transition: background 0.2s;
     }
@@ -327,7 +327,7 @@
       margin-bottom: 0.7rem;
     }
     .writing-card-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.12rem;
       font-weight: 400;
       color: var(--ink);
@@ -407,23 +407,23 @@
       grid-template-columns: 1fr 1fr;
       gap: 0;
       align-items: stretch;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
     }
-    #featured .section-label { grid-column: 1 / -1; border: none; border-bottom: 2px solid var(--ink); margin-bottom: 0; padding: 1rem 1.6rem; }
+    #featured .section-label { grid-column: 1 / -1; border: none; border-bottom: 1px solid var(--ink); margin-bottom: 0; padding: 1.2rem 2rem; }
     #featured .featured-link { margin: -1px; }
-    #featured .featured-item { border: 1px solid var(--ink); }
+    #featured .featured-item { border: 1px solid var(--line); padding: 2rem; }
 
     @media (max-width: 680px) {
       #featured { grid-template-columns: 1fr; }
     }
 
     /* CONTACT — boxed panel, boxed inputs */
-    #contact { border: 2px solid var(--ink); padding: 0; }
-    #contact .section-label { margin: 1.8rem 0 1.8rem 1.8rem; }
-    .contact-form-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; padding: 0 1.8rem 1.8rem; }
+    #contact { border: 1px solid var(--ink); padding: 0; }
+    #contact .section-label { margin: 2.4rem 0 2.4rem 2.4rem; }
+    .contact-form-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; padding: 0 2.4rem 2.4rem; }
 
     .contact-hook {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', sans-serif;
       font-style: italic;
       font-size: clamp(1.1rem, 2vw, 1.3rem);
       font-weight: 400;
@@ -439,10 +439,10 @@
 
     .form-input {
       background: var(--white);
-      border: 1.5px solid var(--ink);
+      border: 1px solid var(--line);
       border-radius: 0;
       padding: 0.6rem 0.8rem;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       font-weight: 300;
       color: var(--ink);
@@ -463,7 +463,7 @@
       border: none;
       border-radius: 0;
       padding: 0.75rem 1.8rem;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.88rem;
       font-weight: 500;
       cursor: pointer;
@@ -473,7 +473,7 @@
     .form-submit:hover { background: var(--accent); }
     .form-success { margin-top: 1rem; font-size: 0.88rem; color: var(--accent); font-style: italic; }
 
-    .footer-band { background: transparent; padding: 2.2rem 0; margin-top: 3rem; border-top: 2px solid var(--ink); }
+    .footer-band { background: transparent; padding: 3rem 0; margin-top: 2rem; border-top: 1px solid var(--line); }
     .footer-inner { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; font-size: 0.78rem; color: var(--muted); }
 
     @keyframes fadeIn { to { opacity: 1; } }
@@ -501,7 +501,7 @@
     <div class="header-inner">
       <div class="header-left">
         <h1 class="name">Christine Lau</h1>
-        <p class="tagline" id="tagline">Executive Advisor</p>
+        <p class="tagline" id="tagline">Strategic Advisor</p>
         <p class="tagline-sub" id="tagline-sub">Service &amp; Digital Performance &nbsp;·&nbsp; Public Sector Governance</p>
         <p class="tagline-bilingual" id="tagline-bilingual">Bilingual &nbsp;·&nbsp; EN / FR</p>
       </div>
@@ -687,7 +687,7 @@
   <script>
     const content = {
       en: {
-        tagline: "Executive Advisor",
+        tagline: "Strategic Advisor",
         taglineSub: "Service & Digital Performance \u00b7 Public Sector Governance",
         taglineBilingual: "Bilingual \u00b7 EN / FR",
         headline: "Building What Lasts.",
@@ -714,7 +714,7 @@
         footer: "Ottawa / Gatineau \u00b7 Canada"
       },
       fr: {
-        tagline: "Conseill\u00e8re ex\u00e9cutive",
+        tagline: "Conseill\u00e8re strat\u00e9gique",
         taglineSub: "Performance num\u00e9rique et des services \u00b7 Gouvernance du secteur public",
         taglineBilingual: "Bilingue \u00b7 FR / EN",
         headline: "B\u00e2tir ce qui dure.",
