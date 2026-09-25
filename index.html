@@ -6,20 +6,20 @@
   <title>Christine Lau</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --dark: #1a1a2e;
-      --bg: #ffffff;
-      --surface: #f7f4ee;
-      --ink: #0f1923;
-      --body: #3a3528;
-      --accent: #C4622D;
-      --accent-bright: #D4845A;
-      --muted: #8c7e5e;
-      --line: #e8e2d4;
+      --dark: #F7F7F5;
+      --bg: #F7F7F5;
+      --surface: #F7F7F5;
+      --ink: #16181A;
+      --body: #43474C;
+      --accent: #3B5D50;
+      --accent-bright: #4C7A69;
+      --muted: #83878C;
+      --line: #16181A;
       --white: #ffffff;
     }
 
@@ -41,237 +41,216 @@
       z-index: 100;
       display: flex;
       justify-content: flex-end;
-      padding: 0.85rem 2.5rem;
-      background: var(--dark);
+      padding: 1.4rem 2.5rem;
+      background: transparent;
+      pointer-events: none;
     }
 
     .lang-toggle {
       display: flex;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 2px;
-      overflow: hidden;
+      gap: 0;
+      pointer-events: auto;
+      border: 1.5px solid var(--ink);
     }
 
     .lang-btn {
-      padding: 0.26rem 0.72rem;
       cursor: pointer;
-      background: transparent;
+      background: none;
       border: none;
-      color: rgba(255,255,255,0.4);
-      transition: all 0.2s;
+      padding: 0.3rem 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s, background 0.2s;
     }
 
-    .lang-btn.active { background: var(--accent); color: white; }
-    .lang-btn:not(.active):hover { color: white; background: rgba(255,255,255,0.08); }
+    .lang-btn.active { color: var(--white); background: var(--ink); }
+    .lang-btn:not(.active):hover { color: var(--ink); }
 
     header {
-      background: var(--dark);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      padding: 5.5rem 0 2.8rem;
+      background: var(--bg);
+      padding: 6.5rem 0 2.5rem;
       opacity: 0;
-      animation: fadeIn 0.8s ease forwards 0.1s;
+      animation: fadeIn 0.9s ease forwards 0.1s;
     }
 
     .header-inner {
       max-width: 920px;
       margin: 0 auto;
-      padding: 0 2.5rem;
+      padding: 2.4rem 2.5rem;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 2rem;
+      border: 2px solid var(--ink);
     }
 
     .name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-size: clamp(2.3rem, 5vw, 3.4rem);
       font-weight: 400;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       line-height: 1.0;
-      color: var(--white);
-      margin-bottom: 0.75rem;
+      color: var(--ink);
+      margin-bottom: 0.9rem;
     }
 
-    .tagline { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-bright); }
-    .tagline-sub { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.82); margin-top: 0.22rem; }
-    .tagline-bilingual { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-top: 0.18rem; }
+    .tagline { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+    .tagline-sub { font-size: 0.86rem; font-weight: 300; color: var(--muted); margin-top: 0.3rem; }
+    .tagline-bilingual { font-size: 0.8rem; font-weight: 300; color: var(--muted); margin-top: 0.9rem; }
 
-    .header-right { text-align: right; flex-shrink: 0; }
+    .header-right { text-align: right; flex-shrink: 0; max-width: 260px; }
 
     .headline {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
       font-weight: 400;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.2;
+      color: var(--body);
+      line-height: 1.3;
     }
 
-    .page-body { max-width: 920px; margin: 0 auto; padding: 0 2.5rem 5rem; }
+    .page-body { max-width: 920px; margin: 0 auto; padding: 2.5rem 2.5rem 6rem; }
 
     .pull-quote-section { display: none; }
 
-    .section-wrap {
-      opacity: 0;
-      transform: translateY(14px);
-      animation: fadeUp 0.7s ease forwards;
-    }
+    .section-wrap { margin-bottom: 2.5rem; }
 
-    .section-wrap:nth-child(2) { animation-delay: 0.48s; }
-    .section-wrap:nth-child(3) { animation-delay: 0.60s; }
-    .section-wrap:nth-child(4) { animation-delay: 0.72s; }
-    .section-wrap:nth-child(5) { animation-delay: 0.84s; }
-    .section-wrap:nth-child(6) { animation-delay: 0.96s; }
-    .section-wrap:nth-child(7) { animation-delay: 1.08s; }
-    .section-wrap:nth-child(8) { animation-delay: 1.20s; }
-
-    .section-white { background: var(--bg); padding: 3.5rem 0; border-bottom: 1px solid var(--line); }
-
-    .section-surface {
-      background: var(--bg);
-      padding: 3.5rem 0;
-      border-bottom: 1px solid var(--line);
-    }
+    .section-white, .section-surface { background: transparent; padding: 0; border-bottom: none; }
 
     .section-label {
-      font-size: 0.64rem;
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1.6rem;
     }
 
-    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-label::after { content: none; }
 
-    /* ASYMMETRIC ABOUT */
+    /* ABOUT — two boxed tiles, one filled */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 4rem;
-      align-items: start;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0;
+      border: 2px solid var(--ink);
     }
     .about-quote {
+      background: var(--ink);
+      color: var(--white);
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
       font-weight: 400;
-      line-height: 1.45;
-      color: var(--ink);
-      letter-spacing: -0.01em;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      padding: 2.4rem;
     }
     .about-quote em {
       font-style: normal;
-      color: var(--accent);
+      color: #A9C9BB;
+    }
+    .about-right {
+      padding: 2.4rem;
+      border-left: 2px solid var(--ink);
     }
     .bio {
-      font-size: clamp(0.92rem, 1.5vw, 1.02rem);
+      font-size: clamp(0.9rem, 1.5vw, 0.98rem);
       font-weight: 300;
-      line-height: 1.85;
+      line-height: 1.8;
       color: var(--body);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
     .known-for {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 400;
-      color: var(--accent);
-      padding-left: 1.1rem;
+      color: var(--body);
+      padding-left: 1rem;
       border-left: 2px solid var(--accent);
       line-height: 1.6;
     }
     @media (max-width: 680px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .about-quote { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-right { border-left: none; border-top: 2px solid var(--ink); }
     }
 
-    .working-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    /* WORKING TOGETHER — bordered boxes, one filled */
+    .working-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--ink); }
 
-    .working-col {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 1.5rem 1.6rem;
-    }
+    .working-col { padding: 2rem; }
+    .working-col:first-child { border-right: 2px solid var(--ink); background: var(--ink); }
+    .working-col:first-child .working-col-title,
+    .working-col:first-child ul li { color: var(--white); }
+    .working-col:first-child .working-col-desc { color: rgba(255,255,255,0.6); border-bottom-color: rgba(255,255,255,0.25); }
+    .working-col:first-child ul li::before { color: #A9C9BB; }
 
-    .working-col-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
+    .working-col-title { font-size: 0.98rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
 
     .working-col-desc {
-      font-size: 0.81rem;
+      font-size: 0.84rem;
       font-weight: 300;
       color: var(--muted);
-      margin-bottom: 1.1rem;
-      padding-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem;
       border-bottom: 1px solid var(--line);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    .working-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .working-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
 
     .working-col ul li {
-      font-size: 0.86rem;
-      font-weight: 400;
+      font-size: 0.88rem;
+      font-weight: 300;
       color: var(--body);
       padding-left: 1rem;
       position: relative;
     }
 
-    .working-col ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.22em; }
+    .working-col ul li::before { content: '\2013'; position: absolute; left: 0; color: var(--accent); }
 
-    /* NUMBERED SELECTED WORK */
-    .highlights { display: flex; flex-direction: column; gap: 0; }
+    @media (max-width: 680px) {
+      .working-cols { grid-template-columns: 1fr; }
+      .working-col:first-child { border-right: none; border-bottom: 2px solid var(--ink); }
+    }
+
+    /* SELECTED WORK — grid of boxes, first spans full width */
+    .highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: -2px;
+      border: 2px solid var(--ink);
+    }
 
     .highlight-item {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr;
-      gap: 1.2rem;
-      align-items: baseline;
-      padding: 1.4rem 0;
-      border-bottom: 1px solid var(--line);
+      padding: 1.7rem;
+      border: 1px solid var(--ink);
+      margin: -1px;
       font-size: 0.92rem;
       font-weight: 300;
       color: var(--body);
       line-height: 1.65;
-      counter-increment: highlight-counter;
-      transition: color 0.2s;
     }
 
-    .highlight-item:first-child { border-top: 1px solid var(--line); }
-    .highlight-item:last-child { border-bottom: 1px solid var(--line); }
+    .highlight-item:first-child { grid-column: 1 / -1; background: var(--surface); font-size: 0.98rem; }
 
-    .highlight-item::before {
-      content: counter(highlight-counter, decimal-leading-zero);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: rgba(196,98,45,0.22);
-      line-height: 1;
-      transition: color 0.2s;
-      padding-top: 0.15rem;
+    @media (max-width: 680px) {
+      .highlights { grid-template-columns: 1fr; }
+      .highlight-item:first-child { grid-column: auto; }
     }
 
-    .highlight-item:hover { color: var(--ink); }
-    .highlight-item:hover::before { color: var(--accent); }
-
-    .highlights { counter-reset: highlight-counter; }
-
-    /* WRITING SECTION */
     /* STICKY NAV */
     .site-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 90;
-      background: rgba(26, 26, 46, 0.96);
+      background: rgba(247, 247, 245, 0.94);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 2px solid var(--ink);
       transform: translateY(-100%);
       transition: transform 0.3s ease;
       padding: 0 2.5rem;
@@ -283,143 +262,131 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 48px;
+      height: 52px;
     }
     .site-nav-name {
       font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.9);
+      color: var(--ink);
       text-decoration: none;
     }
-    .site-nav-links { display: flex; gap: 2rem; list-style: none; }
+    .site-nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .site-nav-links a {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
       text-decoration: none;
       padding-bottom: 2px;
       border-bottom: 1px solid transparent;
       transition: color 0.2s, border-color 0.2s;
     }
     .site-nav-links a:hover,
-    .site-nav-links a.active { color: var(--accent-bright); border-bottom-color: var(--accent); }
+    .site-nav-links a.active { color: var(--ink); border-bottom-color: var(--accent); }
 
-    /* WRITING CARDS */
+    /* WRITING — bento grid, first card larger and filled */
     .writing-intro {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 300;
       color: var(--muted);
       margin-bottom: 1.8rem;
       line-height: 1.6;
+      max-width: 60ch;
     }
     .writing-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 2px solid var(--ink);
     }
     .writing-card {
       display: flex;
       flex-direction: column;
-      background: var(--dark);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 4px;
+      background: var(--bg);
+      border: 1px solid var(--ink);
+      margin: -1px;
+      border-radius: 0;
       padding: 1.8rem;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      transition: background 0.2s;
     }
-    .writing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
+    .writing-card:hover { background: var(--white); }
+    .writing-card:first-child {
+      grid-column: 1 / -1;
+      background: var(--ink);
     }
-    .writing-card:hover {
-      border-color: rgba(196,98,45,0.3);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      transform: translateY(-3px);
-    }
-    .writing-card:hover::before { transform: scaleX(1); }
+    .writing-card:first-child:hover { background: var(--ink); }
+    .writing-card:first-child .writing-card-source { color: #A9C9BB; }
+    .writing-card:first-child .writing-card-title { color: var(--white); font-size: 1.35rem; }
+    .writing-card:first-child .writing-card-desc { color: rgba(255,255,255,0.65); }
+    .writing-card:first-child .writing-card-read { color: #A9C9BB; }
     .writing-card-source {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      opacity: 0.8;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
     }
     .writing-card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.02rem;
+      font-size: 1.12rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.92);
-      line-height: 1.5;
-      margin-bottom: 0.9rem;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 0.7rem;
       flex-grow: 1;
     }
     .writing-card-desc {
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.45);
+      color: var(--body);
       line-height: 1.6;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1rem;
     }
     .writing-card-read {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.68rem;
+      gap: 0.35rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: var(--accent);
-      transition: gap 0.2s;
     }
-    .writing-card:hover .writing-card-read { gap: 0.7rem; }
     .writing-card-read svg {
-      width: 13px; height: 13px;
+      width: 12px; height: 12px;
       stroke: currentColor; fill: none;
       stroke-width: 1.8;
       stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.2s;
     }
+    .writing-card:hover .writing-card-read svg { transform: translateX(2px); }
+
     @media (max-width: 680px) {
       .writing-cards { grid-template-columns: 1fr; }
-      .site-nav-links { gap: 1.2rem; }
-      .site-nav-name { display: none; }
+      .writing-card:first-child { grid-column: auto; }
     }
 
-    /* FEATURED */
-    .featured-link { text-decoration: none; display: block; margin-bottom: 0.75rem; }
-    .featured-link:last-child { margin-bottom: 0; }
+    /* FEATURED — two boxes side by side */
+    .featured-link { text-decoration: none; display: block; }
 
     .featured-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 1.4rem 1.6rem;
-      transition: border-color 0.2s, background 0.2s;
+      gap: 1.2rem;
+      background: var(--bg);
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      padding: 1.6rem;
+      height: 100%;
+      transition: background 0.2s;
     }
 
-    .featured-item:hover { border-color: var(--accent); background: var(--surface); }
+    .featured-item:hover { background: var(--white); }
 
-    .featured-title { font-size: 0.92rem; font-weight: 400; color: var(--ink); line-height: 1.5; margin-bottom: 0.3rem; }
-    .featured-source { font-size: 0.74rem; font-weight: 400; color: var(--accent); letter-spacing: 0.03em; }
+    .featured-title { font-size: 0.94rem; font-weight: 400; color: var(--ink); line-height: 1.5; margin-bottom: 0.35rem; }
+    .featured-source { font-size: 0.8rem; font-weight: 300; color: var(--muted); }
 
     .featured-arrow {
-      width: 18px; height: 18px;
+      width: 16px; height: 16px;
       stroke: var(--accent); fill: none;
       stroke-width: 1.8;
       stroke-linecap: round; stroke-linejoin: round;
@@ -429,32 +396,54 @@
 
     .featured-item:hover .featured-arrow { transform: translate(2px, -2px); }
 
-    /* CONTACT */
-    .contact-form-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
+    #featured .section-label + a,
+    #featured a + a {
+      display: block;
+    }
+
+    /* Featured grid wrapper injected via nth-of-type since links aren't wrapped in a container */
+    #featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      border: 2px solid var(--ink);
+    }
+    #featured .section-label { grid-column: 1 / -1; border: none; border-bottom: 2px solid var(--ink); margin-bottom: 0; padding: 1rem 1.6rem; }
+    #featured .featured-link { margin: -1px; }
+    #featured .featured-item { border: 1px solid var(--ink); }
+
+    @media (max-width: 680px) {
+      #featured { grid-template-columns: 1fr; }
+    }
+
+    /* CONTACT — boxed panel, boxed inputs */
+    #contact { border: 2px solid var(--ink); padding: 0; }
+    #contact .section-label { margin: 1.8rem 0 1.8rem 1.8rem; }
+    .contact-form-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; padding: 0 1.8rem 1.8rem; }
 
     .contact-hook {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
       font-weight: 400;
       line-height: 1.5;
       color: var(--ink);
-      margin-bottom: 1.2rem;
     }
 
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
     .form-group:last-of-type { margin-bottom: 0; }
 
-    .form-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .form-label { font-size: 0.7rem; font-weight: 600; color: var(--muted); }
 
     .form-input {
       background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 2px;
-      padding: 0.6rem 0.85rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+      padding: 0.6rem 0.8rem;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 300;
       color: var(--ink);
       outline: none;
@@ -464,40 +453,37 @@
 
     .form-input:focus { border-color: var(--accent); }
     .form-input::placeholder { color: var(--muted); opacity: 0.6; }
-    .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c7e5e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.2rem; }
-    .form-textarea { min-height: 120px; resize: vertical; }
+    .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2316181a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.2rem; }
+    .form-textarea { min-height: 110px; resize: vertical; }
 
     .form-submit {
       margin-top: 1.2rem;
-      background: var(--dark);
+      background: var(--ink);
       color: var(--white);
       border: none;
-      border-radius: 2px;
+      border-radius: 0;
       padding: 0.75rem 1.8rem;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.88rem;
       font-weight: 500;
-      letter-spacing: 0.04em;
       cursor: pointer;
       transition: background 0.2s;
     }
 
-    .form-submit:hover { background: #2d2d4a; }
+    .form-submit:hover { background: var(--accent); }
     .form-success { margin-top: 1rem; font-size: 0.88rem; color: var(--accent); font-style: italic; }
 
-    .footer-band { background: var(--dark); padding: 2rem 0; margin-top: 4rem; }
-    .footer-inner { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; font-size: 0.7rem; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; }
+    .footer-band { background: transparent; padding: 2.2rem 0; margin-top: 3rem; border-top: 2px solid var(--ink); }
+    .footer-inner { max-width: 920px; margin: 0 auto; padding: 0 2.5rem; font-size: 0.78rem; color: var(--muted); }
 
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { to { opacity: 1; } }
 
     @media (max-width: 680px) {
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .header-right { text-align: left; }
-      .working-cols { grid-template-columns: 1fr; }
-      .section-surface { margin-left: -1.4rem; margin-right: -1.4rem; padding-left: 1.4rem; padding-right: 1.4rem; }
-      .page-body { padding-left: 1.4rem; padding-right: 1.4rem; }
-      .contact-form-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: 1.8rem; }
+      .header-right { text-align: left; max-width: 100%; }
+      .page-body { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .contact-form-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.2rem 1.2rem; }
+      #contact .section-label { margin-left: 1.2rem; }
       .form-row-2 { grid-template-columns: 1fr; }
     }
   </style>
@@ -587,50 +573,40 @@
 
     <!-- WRITING -->
     <div class="section-wrap" id="writing">
-      <div class="section-white" style="background:var(--dark);padding:3.5rem 0;">
-        <div class="section-label" id="label-writing" style="color:var(--accent-bright);">Writing</div>
-        <p class="writing-intro" id="writing-intro" style="color:rgba(255,255,255,0.45);">On governance, accountability, digital government, and the gap between policy ambitions and what actually gets delivered.</p>
+      <div class="section-white">
+        <div class="section-label" id="label-writing">Writing</div>
+        <p class="writing-intro" id="writing-intro">On governance, accountability, digital government, and the gap between policy ambitions and what actually gets delivered.</p>
         <div class="writing-cards">
-          <!-- WRITING-CARDS:START -->
-          <a class="writing-card" href="https://medium.com/@christinelauca/digital-transformation-canada-and-the-twenty-year-digital-impasse-cf5ee628d7b4" target="_blank" rel="noopener">
-            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; September 2026</div>
-            <div class="writing-card-title">Digital Transformation Canada and the Twenty-Year Digital Impasse</div>
-            <div class="writing-card-desc">Canada has been trying to transform government digitally for two decades. The new agency has an opportunity to finally break the cycle.</div>
-            <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </a>
-          <a class="writing-card" href="https://medium.com/@christinelauca/looking-beyond-the-dashboard-c77ec11d81a2" target="_blank" rel="noopener">
-            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; August 2026</div>
-            <div class="writing-card-title">Looking Beyond the Dashboard</div>
-            <div class="writing-card-desc">For more than twenty years, governments across the Commonwealth and beyond have been asking the same question: are we actually delivering…</div>
-            <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </a>
+        <!-- WRITING-CARDS:START -->
           <a class="writing-card" href="https://medium.com/@christinelauca/a-registry-isnt-transparency-3cb8fb48551a" target="_blank" rel="noopener">
             <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; July 2026</div>
-            <div class="writing-card-title">A Registry Isn’t Transparency</div>
-            <div class="writing-card-desc">The Government of Canada’s recent review of the Privacy Act proposes an important change: replacing today’s fragmented Personal Information…</div>
+            <div class="writing-card-title">A Registry Isn&rsquo;t Transparency.</div>
+            <div class="writing-card-desc">Why governments need more than a catalogue of data holdings to earn public trust.</div>
             <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </a>
           <a class="writing-card" href="https://medium.com/@christinelauca/canada-has-two-ai-strategies-neither-can-tell-you-if-theyre-working-4e5c61173fda" target="_blank" rel="noopener">
             <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; June 2026</div>
-            <div class="writing-card-title">Canada Has Two AI Strategies. Neither Can Tell You If They’re Working.</div>
-            <div class="writing-card-desc">Canada published its internal AI strategy for the federal public service in March 2025. Fourteen months later, it launched AI for All: a…</div>
+            <div class="writing-card-title">Canada Has Two AI Strategies. Neither Can Tell You If They&rsquo;re Working.</div>
+            <div class="writing-card-desc">Why measurement is the missing discipline in both of Canada&rsquo;s AI strategies &mdash; and why that matters.</div>
             <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </a>
           <a class="writing-card" href="https://medium.com/@christinelauca/ai-for-all-the-gap-between-adoption-and-protection-c89494cc0711" target="_blank" rel="noopener">
             <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; June 2026</div>
-            <div class="writing-card-title">AI for All? The Gap Between Adoption and Protection</div>
-            <div class="writing-card-desc">One thing struck me when rereading Canada’s new AI for All strategy.</div>
+            <div class="writing-card-title">AI for All? The Gap Between Adoption and Protection.</div>
+            <div class="writing-card-desc">On the imbalance between Canada&rsquo;s AI adoption ambitions and the protections still under development.</div>
             <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </a>
           <a class="writing-card" href="https://medium.com/@christinelauca/the-missing-link-in-canadas-ai-strategies-920fd416924c" target="_blank" rel="noopener">
-            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; June 2026</div>
-            <div class="writing-card-title">The Missing Link in Canada’s AI Strategies</div>
-            <div class="writing-card-desc">Canada’s new AI for All strategy is an important step toward building Canadian AI capacity. But it exposes a gap in the government’s own…</div>
+            <div class="writing-card-source">Medium &nbsp;&middot;&nbsp; May 2026</div>
+            <div class="writing-card-title">The Missing Link in Canada&rsquo;s AI Strategies.</div>
+            <div class="writing-card-desc">What Canada&rsquo;s AI for All strategy doesn&rsquo;t say about how government will act as a coordinated customer, investor, and platform builder.</div>
             <span class="writing-card-read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </a>
-          <!-- WRITING-CARDS:END -->
+        <!-- WRITING-CARDS:END -->
+        </div>
+      </div>
+    </div>
 
-    
     <!-- FEATURED -->
     <div class="section-wrap" id="featured">
       <div class="section-white">
